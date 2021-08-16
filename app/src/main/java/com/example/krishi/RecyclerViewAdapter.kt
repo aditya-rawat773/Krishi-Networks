@@ -30,27 +30,26 @@ class RecyclerViewAdapter: RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder
         holder.bind(items[position])
     }
 
-
-
    inner class MyViewHolder(view: View):RecyclerView.ViewHolder(view){
 
        private val tvDistrict = view.tvDistrict
        private val tvDistance = view.tvDistance
        private val tvState = view.tvState
        private val ivImage = view.ivOtherMandiImage
+       private val tvHindiName = view.tvHindiName
 
         @SuppressLint("SetTextI18n")
         fun bind(data: OtherMandi){
 
-            tvDistrict.text = data.district
+            tvDistrict.text = data.hindi_name
             tvState.text = data.state
+            tvHindiName.text = data.district+","
             tvDistance.text = data.km.toString()+" Km"
 
             val url = data.image
 
             Glide.with(ivImage)
                     .load(url)
-                    .circleCrop()
                     .into(ivImage)
         }
     }
